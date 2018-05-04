@@ -15,14 +15,14 @@ class SaleExcelExportHeader(models.TransientModel):
     _name = "sale.excel.export.header"
     _description = "Sale Excel Export Header"
 
-    date_from = fields.Char(string='From Date')
-    date_to = fields.Char(string='To Date')
-    partner_ids = fields.Many2many('res.partner', string='Customers')
-    order_state = fields.Char(string='Order Status')
-    user = fields.Char(string='Salesperson')
-    team = fields.Char(string='Sales Team')
-    payment_term = fields.Char(string='Payment Term')
-    product_ids = fields.Many2many('product.product', string='Products')
+    date_from = fields.Char(string='Desde')
+    date_to = fields.Char(string='Hasta')
+    partner_ids = fields.Many2many('res.partner', string='Clientes')
+    order_state = fields.Char(string='Estado Orden')
+    user = fields.Char(string='Asesor')
+    team = fields.Char(string='Equipo Ventas')
+    payment_term = fields.Char(string='Plazo de Pago')
+    product_ids = fields.Many2many('product.product', string='Productos')
     line_ids = fields.Many2many('sale.order.line', string='Sale Order Lines')
 
 
@@ -30,20 +30,20 @@ class SaleExcelExport(models.TransientModel):
     _name = "sale.excel.export"
     _description = "Sale Excel Export Wizard"
 
-    date_from = fields.Date(string='From Date', required=True)
-    date_to = fields.Date(string='To Date', required=True)
-    partner_ids = fields.Many2many('res.partner', string='Customers')
+    date_from = fields.Date(string='Desde', required=True)
+    date_to = fields.Date(string='Hasta', required=True)
+    partner_ids = fields.Many2many('res.partner', string='Clientes')
     order_state = fields.Selection([
         ('draft', 'Quotation'),
         ('sent', 'Quotation Sent'),
         ('sale', 'Sales Order'),
         ('done', 'Done'),
         ('cancel', 'Cancelled')
-    ], string='Order Status')
-    user_id = fields.Many2one('res.users', string='Salesperson')
-    team_id = fields.Many2one('crm.team', string='Sales Team')
-    payment_term_id = fields.Many2one('account.payment.term', string='Payment Term')
-    product_ids = fields.Many2many('product.product', string='Products')
+    ], string='Estado Orden')
+    user_id = fields.Many2one('res.users', string='Asesor')
+    team_id = fields.Many2one('crm.team', string='Equipo Ventas')
+    payment_term_id = fields.Many2one('account.payment.term', string='Plazo Pago')
+    product_ids = fields.Many2many('product.product', string='Productos')
 
     @api.multi
     def action_print(self):
