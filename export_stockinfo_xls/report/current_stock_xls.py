@@ -104,9 +104,9 @@ class StockReportXls(ReportXlsx):
         justify.set_align('justify')
         format1.set_align('center')
         red_mark.set_align('center')
-        sheet.merge_range('A3:G3', 'Report Date: ' + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M %p")), format1)
-        sheet.merge_range(2, 7, 2, count, 'Warehouses', format1)
-        sheet.merge_range('A4:G4', 'Product Information', format11)
+        sheet.merge_range('A3:G3', 'Fecha Reporte: ' + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M %p")), format1)
+        sheet.merge_range(2, 7, 2, count, 'Almacenes', format1)
+        sheet.merge_range('A4:G4', 'Informacion Producto', format11)
         w_col_no = 6
         w_col_no1 = 7
         for i in get_warehouse[0]:
@@ -114,19 +114,19 @@ class StockReportXls(ReportXlsx):
             sheet.merge_range(3, w_col_no1, 3, w_col_no, i, format11)
             w_col_no1 = w_col_no1 + 11
         sheet.write(4, 0, 'SKU', format21)
-        sheet.merge_range(4, 1, 4, 3, 'Name', format21)
-        sheet.merge_range(4, 4, 4, 5, 'Category', format21)
-        sheet.write(4, 6, 'Cost Price', format21)
+        sheet.merge_range(4, 1, 4, 3, 'Nombre', format21)
+        sheet.merge_range(4, 4, 4, 5, 'Categoria', format21)
+        sheet.write(4, 6, 'Costo', format21)
         p_col_no1 = 7
         for i in get_warehouse[0]:
-            sheet.write(4, p_col_no1, 'Available', format21)
+            sheet.write(4, p_col_no1, 'Disponible', format21)
             sheet.write(4, p_col_no1 + 1, 'Virtual', format21)
-            sheet.write(4, p_col_no1 + 2, 'Incoming', format21)
-            sheet.write(4, p_col_no1 + 3, 'Outgoing', format21)
-            sheet.merge_range(4, p_col_no1 + 4, 4, p_col_no1 + 5, 'Net On Hand', format21)
-            sheet.merge_range(4, p_col_no1 + 6, 4, p_col_no1 + 7, 'Total Sold', format21)
-            sheet.merge_range(4, p_col_no1 + 8, 4, p_col_no1 + 9, 'Total Purchased', format21)
-            sheet.write(4, p_col_no1 + 10, 'Valuation', format21)
+            sheet.write(4, p_col_no1 + 2, 'Entrando', format21)
+            sheet.write(4, p_col_no1 + 3, 'Saliendo', format21)
+            sheet.merge_range(4, p_col_no1 + 4, 4, p_col_no1 + 5, 'Neto a Mano', format21)
+            sheet.merge_range(4, p_col_no1 + 6, 4, p_col_no1 + 7, 'Total Vendido', format21)
+            sheet.merge_range(4, p_col_no1 + 8, 4, p_col_no1 + 9, 'Total Comprado', format21)
+            sheet.write(4, p_col_no1 + 10, 'Valuacion', format21)
             p_col_no1 = p_col_no1 + 11
         prod_row = 5
         prod_col = 0
