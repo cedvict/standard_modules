@@ -7,4 +7,4 @@
 #
 ##############################################################################
 
-import sales_excel_report
+import sale_excel_report
