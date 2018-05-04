@@ -16,7 +16,7 @@ class SalesReportXlsx(ReportXlsx):
 
     def generate_xlsx_report(self, workbook, data, lines):
         report_header = lines and lines[0] or False
-        sheet = workbook.add_worksheet('Sales Report')
+        sheet = workbook.add_worksheet('Reporte Ventas')
         format1 = workbook.add_format({
             'font_size': 16,
             'bottom': True,
@@ -50,15 +50,15 @@ class SalesReportXlsx(ReportXlsx):
         format3.set_align('center')
         format1.set_align('center')
         # Report main header
-        sheet.merge_range('A1:Q1', 'Sales Report', format1)
+        sheet.merge_range('A1:Q1', 'Reporte Ventas Sarumadi SRL', format1)
         # Report filter header
-        sheet.merge_range('A2:E2', 'Date Range', format11)
-        sheet.merge_range('F2:G2', 'Order Status', format11)
-        sheet.merge_range('H2:I2', 'Payment Term', format11)
-        sheet.merge_range('J2:K2', 'Salesperson', format11)
-        sheet.merge_range('L2:M2', 'Sales Team', format11)
-        sheet.merge_range('N2:O2', 'Customers', format11)
-        sheet.merge_range('P2:Q2', 'Products', format11)
+        sheet.merge_range('A2:E2', 'Rango de Fechas', format11)
+        sheet.merge_range('F2:G2', 'Estado Orden', format11)
+        sheet.merge_range('H2:I2', 'Plazo Pago', format11)
+        sheet.merge_range('J2:K2', 'Asesor', format11)
+        sheet.merge_range('L2:M2', 'Equipo Venta', format11)
+        sheet.merge_range('N2:O2', 'Clientes', format11)
+        sheet.merge_range('P2:Q2', 'Productos', format11)
         # Report filter values
         date_from = datetime.strptime(report_header.date_from, '%Y-%m-%d').strftime(
             '%d/%m/%Y')
@@ -92,18 +92,18 @@ class SalesReportXlsx(ReportXlsx):
         # Empty row
         sheet.merge_range('A4:Q4', '', format1)
         # Report items header
-        sheet.write(4, 0, 'Order Date', format11)
-        sheet.write(4, 1, 'Order #', format11)
-        sheet.write(4, 2, 'Customer', format11)
-        sheet.write(4, 3, 'Salesman', format11)
-        sheet.write(4, 4, 'Sales Team', format11)
-        sheet.write(4, 5, 'Payment Term', format11)
-        sheet.write(4, 6, 'Order Status', format11)
-        sheet.write(4, 7, 'Product', format11)
-        sheet.write(4, 8, 'Quantity', format11)
-        sheet.write(4, 9, 'UoM', format11)
-        sheet.write(4, 10, 'Unit Price', format11)
-        sheet.write(4, 11, 'Taxes', format11)
+        sheet.write(4, 0, 'Fecha Orden', format11)
+        sheet.write(4, 1, 'Orden #', format11)
+        sheet.write(4, 2, 'Cliente', format11)
+        sheet.write(4, 3, 'Asesor', format11)
+        sheet.write(4, 4, 'Equipo de Venta', format11)
+        sheet.write(4, 5, 'Plazo Pago', format11)
+        sheet.write(4, 6, 'Estado Orden', format11)
+        sheet.write(4, 7, 'Producto', format11)
+        sheet.write(4, 8, 'Cantidad', format11)
+        sheet.write(4, 9, 'Unidad Medida', format11)
+        sheet.write(4, 10, 'Precio Unitario', format11)
+        sheet.write(4, 11, 'Impuestos', format11)
         sheet.write(4, 12, 'Total', format11)
         # Totals
         qty_total = 0.00
