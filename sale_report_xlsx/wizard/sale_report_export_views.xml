@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- Sale Report Export Form -->
+	<record id="view_sale_report_export" model="ir.ui.view">
+		<field name="name">sale.excel.export.form</field>
+		<field name="model">sale.excel.export</field>
+		<field name="arch" type="xml">
+			<form string="Sale Report Excel">
+                <group string="Order Date">
+                    <group>
+                        <field name="date_from" string="From"/>
+                    </group>
+                    <group>
+                        <field name="date_to" string="To"/>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="order_state"/>
+                        <field name="payment_term_id" options="{'no_create_edit':1}"/>
+                    </group>
+                    <group>
+                        <field name="user_id" options="{'no_create_edit':1}"/>
+                        <field name="team_id" options="{'no_create_edit':1}"/>
+                    </group>
+                </group>
+                <group string="Customers">
+                    <field name="partner_ids" nolabel="1" domain="[('customer','=',True)]"/>
+                </group>
+                <group string="Products">
+                    <field name="product_ids" nolabel="1"/>
+                </group>
+				<footer>
+					<button name="action_print" string="Print" type="object" class="btn-primary"/>
+					<button string="Cancel" class="btn-default" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<!-- Sale Report Excel Action -->
+	<record id="action_sale_report_export" model="ir.actions.act_window">
+		<field name="name">Sales Report Excel</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">sale.excel.export</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="view_sale_report_export"/>
+		<field name="target">new</field>
+	</record>
+
+	<!-- Sale Report Excel Menu -->
+	<menuitem id="menu_sale_report_export"
+		action="action_sale_report_export"
+		name="Sales Report Excel"
+		parent="sales_team.menu_sale_report"
+		sequence="100"/>
+
+</odoo>
