@@ -29,7 +29,7 @@
     'version': '1.0',
     'depends': ['sale', 'report_xlsx'],
     'data': [
-        'report/sales_reports.xml',
+        'report/sale_reports.xml',
         'wizard/sale_report_export_views.xml',
     ],
     'demo': [
