@@ -21,3 +21,10 @@ class ImportacionesDatos(models.Model):
     pagado = fields.Float('Pagado', help=u'Monto pagado hasta la fecha')
     saldo = fields.Float('Saldo', help=u'Saldo pendiente por pagar a la fecha')
     estado = fields.Selection([('Por pagar','Por pagar'),('Pagado','Pagado')], string="Estado")
+    linea_costo = fields.One2many('stock.landed.cost', 'costo_import_id', 'Lineas De Costos')
+
+class StockLandedCostImport(models.Model):
+
+    _inherit = 'stock.landed.cost'
+
+    costo_import_id = fields.One2many('detalle.costos', 'linea_costo', 'Lineas De Costos')
