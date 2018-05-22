@@ -13,9 +13,9 @@
             <field name="importaciones_tipo" />
         </field>
         <field name="partner_ref" position="after">
-            <field name="importaciones_nro_importacion" />
-            <field name="importaciones_referencia" />
-            <field name="importaciones_tipo_pago" />
+            <field name="importaciones_nro_importacion" attrs="{'invisible': [('importaciones_tipo', '=', 'L')]}" />
+            <field name="importaciones_referencia" string="Ref. Importación" attrs="{'invisible': [('importaciones_tipo', '=', 'L')]}"/>
+            <field name="importaciones_tipo_pago" attrs="{'invisible': [('importaciones_tipo', '=', 'L')]}"/>
         </field>
 
         <page name="Importaciones" position="inside">
