@@ -2,16 +2,16 @@
 <t t-name="account.report_invoice_document">
     <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
         <div class="page">
-            <div class="col-xs-6" style="font-size:12px">
-                <img style="width:105px;height:55px" t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' %res_company.logo"/>
-                <p>ING. MAURICIO CARREÑO SALGUERO<br/>
+            <div class="col-xs-6" >
+                <img style="width:105px;height:85px" t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' %res_company.logo"/>
+                <p style="font-size:15px"><strong>NUBE DE PAPEL</strong> de Gloria Parra Ortiz<br/></p>
+                <p style="font-size:12px">
                 <span t-field="o.sucursal"/><br/>
                 <span t-field="o.direccion"/>
                 </p>
             </div>
-            
+            <br/>            <br/>            <br/>            <br/> 
             <div class="col-xs-6">
-                <br/><br/>
                 <p class="border-black" align="right">
                     <strong>NIT: </strong><span t-field="o.nit_empresa"/><br/>
                     <strong>FACTURA Nro.:  </strong><span t-field="o.number"/><br/>
@@ -32,7 +32,7 @@
 
             <!-- Is there a discount on at least one line? -->
             <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
-            <div  style="padding-top:40px;">
+            <div  style="padding-top:10px;">
                 <table class="table table-condensed">
                     <thead>
                         <tr>
@@ -71,13 +71,12 @@
                         </tr>
                     </table>
                 </div>
-                <div>
-                    <p>SON: <span t-esc="to_word(o.amount_total)"/>
-                    <t t-if="o.currency_id.long_name"><span t-esc="o.currency_id.long_name"/></t></p>
-                </div>
+                
             </div>
 
-            <div class="col-xs-4 pull-left">
+            <div >
+                <span><strong>Son : </strong></span> 				
+            <span t-field="o.amount_in_words"/><br/>
                 <t t-foreach="o._get_tax_amount_by_group()" t-as="amount_by_group">
                     <t t-if="amount_by_group[0]=='Impuestos'">
                         <t t-set="foo" t-value="o.amount_untaxed + amount_by_group[1]"/>
@@ -88,15 +87,10 @@
             </div>
             
             <div> 
-                <p>
-                <br></br><br/><br/><br/><br/><br/><br/>
-                <div class="row">
-                    <div name="invoice_address" class="col-xs-5 col-xs-offset-7"></div>
-                </div>
-                </p>
+
                 
                 <p class="text-center">
-                   <br></br><br/><br/><br/><br/><br/><br/>
+                    <br></br>
                    <strong>CODIGO CONTROL: </strong><span t-field="o.code"/><br></br>
                    <strong>FECHA LIMITE EMISIÓN: </strong><span t-field="o.fecha"/>
                 
